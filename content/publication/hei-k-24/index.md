@@ -1,36 +1,13 @@
 ---
-# Documentation: https://wowchemy.com/docs/managing-content/
-
 title: Polytopic Autoencoders with Smooth Clustering for Reduced-order Modelling of
   Flows
-subtitle: ''
-summary: ''
 authors:
 - Jan Heiland
 - Yongho Kim
-tags: []
-categories: []
 date: '2024-01-01'
-lastmod: 2024-01-23T10:15:35+01:00
-featured: false
-draft: false
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
-image:
-  caption: ''
-  focal_point: ''
-  preview_only: false
-
-# Projects (optional).
-#   Associate this post with one or more of your projects.
-#   Simply enter your project's folder or file name without extension.
-#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
-#   Otherwise, set `projects = []`.
-projects: []
+publishDate: '2024-06-13T12:14:12.014265Z'
 publication_types:
-- '0'
+- manuscript
 abstract: With the advancement of neural networks, there has been a notable increase,
   both in terms of quantity and variety, in research publications concerning the application
   of autoencoders to reduced-order models. We propose a polytopic autoencoder architecture
@@ -44,10 +21,7 @@ abstract: With the advancement of neural networks, there has been a notable incr
   involving two flow scenarios with the incompressible Navier-Stokes equation. Numerical
   results demonstrate the guaranteed properties of the model, low reconstruction errors
   compared to POD, and the improvement in error using a clustering network.
-publication: ''
 links:
 - name: arXiv
   url: https://arxiv.org/abs/2401.10620
-- name: Code
-  url: https://doi.org/10.5281/zenodo.10491870
 ---
