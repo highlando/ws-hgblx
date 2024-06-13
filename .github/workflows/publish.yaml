@@ -58,21 +58,27 @@ jobs:
       with:
         path: ./public
 
-  # Deploy website to GitHub Pages hosting
-  deploy:
-    # if: github.repository_owner != 'HugoBlox'
-    # environment:
-    #   name: github-pages
-    #   url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v2
-
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
         branch: gh-pages # The branch the action should deploy to.
-        folder: . # The folder the action should deploy.
+        folder: public # The folder the action should deploy.
+
+    # # Deploy website to GitHub Pages hosting
+    # deploy:
+    #   # if: github.repository_owner != 'HugoBlox'
+    #   # environment:
+    #   #   name: github-pages
+    #   #   url: ${{ steps.deployment.outputs.page_url }}
+    #   runs-on: ubuntu-latest
+    #   needs: build
+    #   steps:
+    #     # - name: Deploy to GitHub Pages
+    #     #   id: deployment
+    #     #   uses: actions/deploy-pages@v2
+
+    #   - name: Deploy
+    #     uses: JamesIves/github-pages-deploy-action@v4.3.3
+    #     with:
+    #       branch: gh-pages # The branch the action should deploy to.
+    #       folder: . # The folder the action should deploy.
