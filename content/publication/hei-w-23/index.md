@@ -10,4 +10,5 @@ publication_types:
 - article-journal
 publication: '*IEEE Control Syst. Lett.*'
 doi: 10.1109/LCSYS.2023.3291231
+featured: true
 ---

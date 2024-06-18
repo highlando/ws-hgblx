@@ -24,4 +24,5 @@ abstract: With the advancement of neural networks, there has been a notable incr
 links:
 - name: arXiv
   url: https://arxiv.org/abs/2401.10620
+featured: true
 ---
