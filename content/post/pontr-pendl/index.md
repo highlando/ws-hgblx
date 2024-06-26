@@ -45,6 +45,14 @@ attach the complete book by Pontryagin to a specific formula[^2].
 
 {{% toc %}}
 
+In this post, I show 
+
+* for the example of a 2D pendulum,
+* how a standard dynamic optimization problem is brought into the form for which Pontryagin's original results apply
+* how the optimality conditions are derived directly from Pontryagin's theorems
+* and under which particular choices of bases, they become the set of equations
+  that are typically referred to in the literature and on wikipedia.
+
 # The Model
 
 ## A Unit Pendulum 
@@ -130,9 +138,12 @@ With consider two control setups:
 
 # The Maximum Principle 
 
-Classically, as treated by Pontryagin itself[^3], one seeks the minimum over all $u=(g_1, g_2)$ that *a-priori* ensure that $\theta(t_1)=0$ and $p(t_1)=0$. This, in a sense, means that suitable controls are known and that the optimization looks for those with the least magnitude. For people like me, that use optimization because they don't know a control, this seems not very feasible. But Pontryagin has the answer for that too:
+Classically, as treated by Pontryagin itself[^3] (see the title image for the original statement), one seeks the minimum over all $u$ (here, we have $u=(g_1, g_2)$) that **a-priori** ensure that the initial value is transferred into the target value (here: ensure that $(\theta(t_1), p(t_1))=(0, 0)$. 
+
+In other words, this means that suitable controls are known and that the optimization looks for those with the least magnitude. For people like me, that use optimization because they don't know a control, this seems not very feasible. But Pontryagin has the answer for that too:
 
 [^3]: Ch. I.2 in his book
+
 ## Maximum Principle with Variable Endpoints
 
 One can (partially) abandon the end conditions, see Chapter I.7 in Pontryagin's book. Similarly, one can abandon the initial conditions which, again, seems odd from an application point of view. Also, simply omitting the end conditions will lead to trivial solutions. Certainly, we need to include them in the optimization. Which leads to the Wikipedia case.
@@ -140,7 +151,12 @@ One can (partially) abandon the end conditions, see Chapter I.7 in Pontryagin's 
 ## The Wikipedia Case
 
 Commonly used and illustrated on [wikipedia:Pontryagin's maximum principle](https://en.wikipedia.org/wiki/Pontryagin%27s_maximum_principle#Formal_statement_of_necessary_conditions_for_minimization_problem)
--- the form that leaves the controls free but penalizes the endpoint. Now, let me show how this form derives from Pontryagin's book.
+-- the form that leaves the controls free (in the sense that the trajectory does
+not need to end in the target state) but instead penalizes the endpoint.
+
+![The setup for the *Pontryagin Maximum Principle* as used on *wikipedia*](pmp-wikipedia.png)
+
+Now, let me show how this form derives from Pontryagin's book.
 
 # Connecting Wikipedia and Pontryagin
 
@@ -154,7 +170,7 @@ The derivation of the *Wikipedia* formulas from the *Maximum Principle with Vari
 
 For the pendulum optimal control problem 
 
-$$\frac{1}{2}(\theta(t\_1)^2 + p(t\_1)^2) +\frac{1}{2}\int_{t_0}^{t\_1} g_1^2 + g\_2^2 \;dt \to \min$$
+$$\frac{1}{2}(\theta(t_1)^2 + p(t_1)^2) +\frac{1}{2}\int_{t_0}^{t_1} g_1^2 + g_2^2 \;dt \to \min$$
 
 subject to
 
@@ -175,7 +191,7 @@ this means:
 
 ## I. Lagrange form
 
-We get rid of the costs that are put on the terminal values by introducing a variable $\tilde x$. Thus the optimal control problem no reads:
+We get rid of the costs that are put on the terminal values by introducing a variable $\tilde x$. Thus the optimal control problem now reads:
 
 $$
 \mathcal J:=\int_{t_0}^{t_1} \tilde x + \frac{1}{2}(g_1^2+g_2^2) \;dt \to \min
@@ -185,13 +201,13 @@ subject to
 
 $$
 \begin{aligned}
-\dot {\tilde x} &= 0, \\\\\\\\
-\dot \theta &= \frac{p}{mL^2},\\\\\\\\
+\dot {\tilde x} &= 0, \\
+\dot \theta &= \frac{p}{mL^2},\\
 \dot p &= -mg_1L\cos \theta - mg_2L\sin \theta.
 \end{aligned}
 $$
 
-with one end condition
+with one terminal condition
 
 $$
 \tilde x(t_1) = \frac{1}{2(t_1-t_0)}(\theta(t_1)^2+p(t_1)^2), 
@@ -204,12 +220,23 @@ $$
 $$
 
 > In fact, since $\tilde x$ is constant and fixed by its end condition, one obtains that 
-
 > $\int_{t_0}^{t_1} \tilde x \;dt = (t_1 - t_0)\tilde x(t_1) = \frac{1}{2}(\theta(t_1)^2+p(t_1)^2).$
 
-Once in *Lagrange* form, the problem can be put into the form used in Pontryagin's theorem:
+Once in *Lagrange* form, the problem can be put into the form used in Pontryagin's *Theorem 1*:
 
-## II. Pontryagin's terms
+![](pon-theorem-1.png)
+
+... where in particular the bold face $\mathbf x := (x^0, x)$ is the original
+state $x$ augmented with the integrated running cost $x^0$, so that *$\mathbf x$
+passes through $\Pi$ at time $t_1$* means feasibility
+**and** optimality namely 
+
+ * that $x$ at $t_1$ assumes the prescribed value $x_1$ and 
+ * that $x^0(t_1)=\int_{t_0}^{t_1}f(x(t), u(t))\;dt $ is a minimum.
+
+Hence, we arrive at the somewhat involved but plausible and *in line with the theory* formulation in:
+
+## II. Pontryagin's formulation
 
 $$
 x^0(t_1) \to \min
@@ -219,18 +246,16 @@ subject to
 
 $$
 \begin{aligned}
-\dot x^0 &= \tilde x + \frac{1}{2}(g_1^2+g_2^2), \\\\\\\\
-\dot {\tilde x} &= 0, \\\\\\\\
-\dot \theta &= \frac{p}{mL^2},\\\\\\\\
+\dot x^0 &= \tilde x + \frac{1}{2}(g_1^2+g_2^2), \\
+\dot {\tilde x} &= 0, \\
+\dot \theta &= \frac{p}{mL^2},\\
 \dot p &= -mg_1L\cos \theta - mg_2L\sin \theta.
 \end{aligned}
 $$
 
 with initial conditions
 
-\begin{equation}
-x^0(t_0)=0, \quad \theta(t_0)=\pi, \quad p(t_0)=0,
-\end{equation}
+$$x^0(t_0)=0, \quad \theta(t_0)=\pi, \quad p(t_0)=0,$$
 
 and the end condition
 
@@ -243,12 +268,14 @@ $$
 The corresponding adjoint system for the $\psi$ reads[^4]
 [^4]: Pontryagin et al., Theorem 1
 
-\begin{align}
-\dot \psi_0 &= 0, \\\\\\\\
-\dot \psi_1 &= -\psi_0, \\\\\\\\
-\dot \psi_2 &= -(mg_1L\sin\theta - mg_2L\cos\theta) \psi_3, \\\\\\\\
+$$
+\begin{aligned}
+\dot \psi_0 &= 0, \\
+\dot \psi_1 &= -\psi_0, \\
+\dot \psi_2 &= -(mg_1L\sin\theta - mg_2L\cos\theta) \psi_3, \\
 \dot \psi_3 &= -\frac{1}{mL^2}\psi_2.
-\end{align}
+\end{aligned}
+$$
 
 This $\psi$ defines the control Hamiltonian as
 
@@ -256,9 +283,9 @@ $$
 \bigl(\psi, f(x;G) \bigl ) =
 \bigl(\psi, 
 \begin{bmatrix}
- \tilde x + \frac{1}{2}(g_1^2+g_2^2) \\\\\\\\
- 0 \\\\\\\\
- \frac{p}{mL^2}\\\\\\\\
+ \tilde x + \frac{1}{2}(g_1^2+g_2^2) \\
+ 0 \\
+ \frac{p}{mL^2}\\
  -mg_1L\cos \theta - mg_2L\sin \theta
      \end{bmatrix}
 \bigl )
@@ -278,28 +305,30 @@ Then the *transversality condition*[^5] that $\psi(t_1)$ has to be *orthogonal* 
 
 [^5]: Pontryagin et al., Ch. I.7
 
-\begin{align}
-\frac{1}{t_1-t_0}p(t_1)\psi_1(t_1) - \psi_3(t_1) &= 0, \\\\\\\\ 
+$$
+\begin{aligned}
+\frac{1}{t_1-t_0}p(t_1)\psi_1(t_1) - \psi_3(t_1) &= 0, \\
 \frac{1}{t_1-t_0}\theta(t_1)\psi_1(t_1) - \psi_2(t_1) &= 0.
-\end{align}
+\end{aligned}
+$$
 
 > These give the *Wikipedia* terminal condition for the adjoint state with the choice of $\psi_1(t_1) = t_1-t_0$.
 
 Note that these particular end conditions were derived from the particular basis 
 
 $$
-\biggl\\{
+\biggl\{
 \begin{bmatrix} 
-    \frac{1}{t\_1-t\_0}p \\\\ 0 \\\\ 1
+    \frac{1}{t\_1-t\_0}p \\ 0 \\ 1
 \end{bmatrix}, 
 \begin{bmatrix} 
-    \frac{1}{t_1-t_0}\theta \\\\ 1 \\\\ 0
+    \frac{1}{t_1-t_0}\theta \\ 1 \\ 0
 \end{bmatrix}
-\biggr\\}
+\biggr\}
 $$
 
 of the tangent space and note that any other basis can be taken, or equivalently, any linear combination of the boundary conditions are feasible.
 
 # References
 
-:orange_book: Pontryagin, Boltyanski, Gamkrelidze, and Mishchenko (1962) *The Mathematical Theory of Optimal Processes*
+Theory and the screenshots are from :orange_book: Pontryagin, Boltyanski, Gamkrelidze, and Mishchenko (1962) *The Mathematical Theory of Optimal Processes*
