@@ -27,7 +27,7 @@ links:
   icon_pack: fas
   icon: globe
 - name: Apply
-  url: https://ovgu.b-ite.careers/e1dns
+  url: mailto:jan.heiland@tu-ilmenau.de
   icon_pack: fas
   icon: envelope
 
