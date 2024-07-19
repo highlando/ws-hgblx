@@ -27,7 +27,7 @@ links:
   icon_pack: fas
   icon: globe
 - name: Apply
-  url: mailto:jan.heiland@tu-ilmenau.de
+  url: https://jobundkarriere.tu-ilmenau.de/jobposting/dba6322cf59485548da2935356aeee7bcb65cd890?ref=homepage
   icon_pack: fas
   icon: envelope
 
