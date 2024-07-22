@@ -7,7 +7,7 @@ F&uuml;r Sch&uuml;lerUnis bietet sich die Modellierung von Epidemien an, weil
 die Mechanismen und die Mathematik im Modell nachvollziehbar sind. Bisher hatte
 mich an meinen Versuchen damit aber gest&ouml;rt, dass
 
-1. das Thema etwas tr&uuml;be ist (niemand hat wirklich Lust auf Corona oder
+1. das Thema etwas tr&uuml;be ist (niemand hat Lust auf Corona oder
    einen Zombie)
 2. Es doch abstrakte Mathe bleibt (wenn beispielsweise im deterministischen
    "SIR"-Modell die Ansteckungsraten einfach angenommen werden)
@@ -65,7 +65,7 @@ wahrnehmen, die Computersimulation dazu zu sehen.
 
 ### Computersimulation
 
-Die Simulation erm&ouml;glicht in der Tat, das schnelle Durchspielen der
+Die Simulation erm&ouml;glicht in der Tat das schnelle Durchspielen der
 Experimente und illustriert die gro&szlig;en Abweichungen in den Resultaten. 
 
 Auch erm&ouml;glicht es die Simulation, die Anzahl der Teilnehmer:innen im
@@ -75,10 +75,10 @@ schwankte.
 
 Diese Erkenntnis wurde gefestigt in der nachfolgenden Aufgabe, zu der immer zwei
 Sch&uuml;lerinnen einen Datensatz (mit 50 simulierten Durchl&auml;ufen) zu
-jeweils einer Anzahl von Proband:innen bekamen und ein vorbereitetes Blatt in
-dem durch ausmalen von K&auml;stchen die Daten in ein Histogramm
-&uuml;berf&uuml;hrt wurden. Das und die abschlie&szlig;ende gemeinsame
-Erkenntnis, dass f&uuml;r gr&ouml;&szlig;ere Gruppen, die Bilder weniger wild
+jeweils einer Anzahl von Proband:innen bekamen. Diese Daten sollten in ein
+vorbereitetes Blatt in ein Histogramm (durch ausmalen von K&auml;stchen) 
+&uuml;berf&uuml;hrt wurden. Das und die abschlie&szlig;ende &Uuml;bereinkunft,
+dass f&uuml;r gr&ouml;&szlig;ere Gruppen, die Bilder weniger wild
 aussehen, kam wirklich gut an.
 
 ![Close up von 2 Histogrammen](bilder/histocloseup.jpg "**Bild 3**: Gemalte
@@ -92,8 +92,7 @@ w&auml;re.
 
 ## Materialien
 
- * gen&uuml;gend Lollies zum Verteilen (vielleicht gehen auch F&auml;hnchen
-   o.&auml;h.)
+ * gen&uuml;gend Lollies zum Verteilen (vielleicht gehen auch F&auml;hnchen?)
  * W&uuml;rfel und W&uuml;rfelbecher
  * Tafel zur Protokollierung
  * [Simulationsskript](simu-2.py)
